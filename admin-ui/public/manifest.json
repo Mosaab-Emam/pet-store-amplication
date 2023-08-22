@@ -1,6 +1,6 @@
 {
-  "short_name": "Pet Store-1",
-  "name": "Pet Store-1",
+  "short_name": "pet-store",
+  "name": "pet-store",
   "icons": [
     {
       "src": "favicon.ico",

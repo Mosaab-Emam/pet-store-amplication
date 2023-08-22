@@ -1,5 +1,5 @@
 {
-  "name": "@pet-store-1/server",
+  "name": "@pet-store/server",
   "private": true,
   "scripts": {
     "start": "nest start",
@@ -17,6 +17,7 @@
     "package:container": "docker build .",
     "compose:up": "docker-compose up -d",
     "compose:down": "docker-compose down --volumes",
+    "format": "prettier --write .",
     "prisma:pull": "prisma db pull",
     "prisma:push": " prisma db push"
   },
@@ -67,7 +68,8 @@
     "ts-jest": "27.0.3",
     "typescript": "4.2.3",
     "@types/passport-http": "0.3.9",
-    "@types/passport-jwt": "3.0.8"
+    "@types/passport-jwt": "3.0.8",
+    "prettier": "^2.8.0"
   },
   "jest": {
     "preset": "ts-jest",
