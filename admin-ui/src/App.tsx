@@ -9,6 +9,22 @@ import { UserList } from "./user/UserList";
 import { UserCreate } from "./user/UserCreate";
 import { UserEdit } from "./user/UserEdit";
 import { UserShow } from "./user/UserShow";
+import { CategoryList } from "./category/CategoryList";
+import { CategoryCreate } from "./category/CategoryCreate";
+import { CategoryEdit } from "./category/CategoryEdit";
+import { CategoryShow } from "./category/CategoryShow";
+import { TagList } from "./tag/TagList";
+import { TagCreate } from "./tag/TagCreate";
+import { TagEdit } from "./tag/TagEdit";
+import { TagShow } from "./tag/TagShow";
+import { PetList } from "./pet/PetList";
+import { PetCreate } from "./pet/PetCreate";
+import { PetEdit } from "./pet/PetEdit";
+import { PetShow } from "./pet/PetShow";
+import { OrderList } from "./order/OrderList";
+import { OrderCreate } from "./order/OrderCreate";
+import { OrderEdit } from "./order/OrderEdit";
+import { OrderShow } from "./order/OrderShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -28,7 +44,7 @@ const App = (): React.ReactElement => {
   return (
     <div className="App">
       <Admin
-        title={"Pet Store-1"}
+        title={"pet-store"}
         dataProvider={dataProvider}
         authProvider={jwtAuthProvider}
         theme={theme}
@@ -41,6 +57,34 @@ const App = (): React.ReactElement => {
           edit={UserEdit}
           create={UserCreate}
           show={UserShow}
+        />
+        <Resource
+          name="Category"
+          list={CategoryList}
+          edit={CategoryEdit}
+          create={CategoryCreate}
+          show={CategoryShow}
+        />
+        <Resource
+          name="Tag"
+          list={TagList}
+          edit={TagEdit}
+          create={TagCreate}
+          show={TagShow}
+        />
+        <Resource
+          name="Pet"
+          list={PetList}
+          edit={PetEdit}
+          create={PetCreate}
+          show={PetShow}
+        />
+        <Resource
+          name="Order"
+          list={OrderList}
+          edit={OrderEdit}
+          create={OrderCreate}
+          show={OrderShow}
         />
       </Admin>
     </div>

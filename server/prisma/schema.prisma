@@ -17,3 +17,58 @@ model User {
   updatedAt DateTime @updatedAt
   username  String   @unique
 }
+
+model Category {
+  createdAt DateTime @default(now())
+  id        String   @id @default(auto()) @map("_id") @mongo.ObjectId
+  name      String   @unique
+  pets      Pet[]
+  updatedAt DateTime @updatedAt
+}
+
+model Tag {
+  createdAt DateTime @default(now())
+  id        String   @id @default(auto()) @map("_id") @mongo.ObjectId
+  name      String   @unique
+  pets      Pet[]    @relation(fields: [petsIds], references: [id])
+  petsIds   String[] @mongo.ObjectId
+  updatedAt DateTime @updatedAt
+}
+
+model Pet {
+  categoryId Category       @relation(fields: [id], references: [id])
+  id         String
+  createdAt  DateTime       @default(now())
+  id         String         @id @default(auto()) @map("_id") @mongo.ObjectId
+  name       String
+  orders     Order[]
+  photoUrls  Json
+  status     EnumPetStatus?
+  tags       Tag[]          @relation(fields: [tagsIds], references: [id])
+  tagsIds    String[]       @mongo.ObjectId
+  updatedAt  DateTime       @updatedAt
+}
+
+model Order {
+  complete  Boolean
+  createdAt DateTime        @default(now())
+  id        String          @id @default(auto()) @map("_id") @mongo.ObjectId
+  petId     Pet             @relation(fields: [id], references: [id])
+  id        String
+  quantity  Int
+  shipDate  DateTime?
+  status    EnumOrderStatus
+  updatedAt DateTime        @updatedAt
+}
+
+enum EnumPetStatus {
+  available
+  pending
+  sold
+}
+
+enum EnumOrderStatus {
+  placed
+  approved
+  delivered
+}
